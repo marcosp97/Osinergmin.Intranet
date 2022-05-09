@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": false,
+    "version": "1.14.0",
+    "libraryName": "osinergmin-intranet",
+    "libraryId": "f0cdddbe-f7b1-4421-a317-6d6f71a38dab",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "osinergmin-intranet",
+    "solutionShortDescription": "osinergmin-intranet description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

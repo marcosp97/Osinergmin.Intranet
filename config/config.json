@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "wp-aplicaciones-usuario-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/wpAplicacionesUsuario/WpAplicacionesUsuarioWebPart.js",
+          "manifest": "./src/webparts/wpAplicacionesUsuario/WpAplicacionesUsuarioWebPart.manifest.json"
+        }
+      ]
+    },
+    "wp-aplicaciones-office-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/wpAplicacionesOffice/WpAplicacionesOfficeWebPart.js",
+          "manifest": "./src/webparts/wpAplicacionesOffice/WpAplicacionesOfficeWebPart.manifest.json"
+        }
+      ]
+    },
+    "wp-paginas-favoritas-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/wpPaginasFavoritas/WpPaginasFavoritasWebPart.js",
+          "manifest": "./src/webparts/wpPaginasFavoritas/WpPaginasFavoritasWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "WpAplicacionesUsuarioWebPartStrings": "lib/webparts/wpAplicacionesUsuario/loc/{locale}.js",
+    "WpAplicacionesOfficeWebPartStrings": "lib/webparts/wpAplicacionesOffice/loc/{locale}.js",
+    "WpPaginasFavoritasWebPartStrings": "lib/webparts/wpPaginasFavoritas/loc/{locale}.js"
+  }
+}
