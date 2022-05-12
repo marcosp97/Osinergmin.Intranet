@@ -1,0 +1,1 @@
+export const buildFullName = (names: string[]) => names.filter(_ => !!_).map(_ => _.trim()).join(' ')

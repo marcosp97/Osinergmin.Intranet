@@ -1,0 +1,345 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.center{
+    text-align: center;
+  }
+  
+  .centervertical{
+    margin: 0px 65px;
+    color: white;
+  }
+  
+
+    .msGrid{
+        @include ms-Grid;
+      }
+      
+      .msGridrow{
+        padding-bottom: 15px;
+        @include ms-Grid-row;
+      }
+      
+      .msGridcol12{
+        @include ms-Grid-col;
+        @include ms-sm12;
+      }
+      
+      .msGridcol11{
+        @include ms-Grid-col;
+        @include ms-sm12;
+        @include ms-xl11;
+      }
+      
+      .msGridcol10{
+        @include ms-Grid-col;
+        @include ms-sm12;
+        @include ms-xl10;
+      }
+      
+      .msGridcol9{
+        @include ms-Grid-col;
+        @include ms-sm12;
+        @include ms-xl9;
+      }
+      
+      .msGridcol8{
+        @include ms-Grid-col;
+        @include ms-sm12;
+        @include ms-xl8;
+      }
+      
+      .msGridcol7{
+        @include ms-Grid-col;
+        @include ms-sm12;
+        @include ms-xl7;
+      }
+      
+      .msGridcol6{
+        @include ms-Grid-col;
+        @include ms-sm12;
+        @include ms-xl6;
+      }
+      
+      .msGridcol5{
+        @include ms-Grid-col;
+        @include ms-sm12;
+        @include ms-xl5;
+      }
+      
+      .msGridcol4{
+        @include ms-Grid-col;
+        @include ms-sm12;
+        @include ms-xl4;
+      }
+      
+      .msGridcol3{
+        @include ms-Grid-col;
+        @include ms-sm12;
+        @include ms-xl3;
+      }
+      
+      .msGridcol2{
+        @include ms-Grid-col;
+        @include ms-sm12;
+        @include ms-xl2;
+      }
+      
+      .msGridcol1{
+        @include ms-Grid-col;
+        @include ms-sm12;
+        @include ms-xl1;
+      }
+      
+      // .CanvasSection.CanvasSection-col.CanvasSection-sm12.CanvasSection-xl12.CanvasSection--edit.CanvasSection--selected {
+      // 	float: none;
+      // }
+      
+      // .CanvasZone.row.CanvasZone--alignment.CanvasZone--noMargin.CanvasZone--edit.CanvasZone--controlSelected {
+      // 	max-width: none;
+      // }
+      
+      
+      #workbenchPageContent {
+          right: 0;
+          max-width: none;
+          left: 0;
+          border: none;
+      }
+      
+      :global {
+        .ms-Layer {
+          button {
+            min-width: 0px !important;
+            margin-left: 0px !important;
+          }
+        }
+      }
+      
+      
+.mssm11{
+  @include ms-Grid-col;
+  @include ms-sm11;
+}
+
+.mssm1{
+  @include ms-Grid-col;
+  @include ms-sm1;
+}
+.wrapper {
+  margin: 0 auto;
+
+  .Dropdown  {
+    min-width: 300px;
+  }   
+
+  .row {
+    @include ms-Grid-row;
+    @include ms-fontColor-white;
+    background-color: $ms-color-themeDark;
+    padding: 20px;
+  }
+  .col4 {
+    @include ms-Grid-col;
+    @include ms-sm4;
+  }
+  .col6 {
+    @include ms-Grid-col;
+    @include ms-sm6;
+  }  
+  .col8 {
+    @include ms-Grid-col;
+    @include ms-sm8;
+  }
+
+  .column {
+    @include ms-Grid-col;
+    @include ms-lg10;
+    @include ms-xl8;
+    @include ms-xlPush2;
+    @include ms-lgPush1;
+  }
+
+  h1 {
+    text-transform: uppercase;
+    font-size: 18px;
+  }
+
+  .title {
+    @include ms-font-xl;
+    color:#24303e;
+  }
+
+  .subTitle {
+    @include ms-font-l;
+    @include ms-fontColor-white;
+  }
+
+  .description {
+    @include ms-font-l;
+    @include ms-fontColor-white;
+  }
+
+  .disabled {
+    input {
+      background: #a8babc !important;
+      border: 1px solid #a8babc !important;
+      border-radius: 3px !important;
+      color: #24303e;
+    }
+  }
+  .bordetextarea {
+    div {
+      div {
+        border: 0 !important;
+        textarea {
+          background: #fff !important;
+          border: 1px solid #a8babc !important;
+          border-radius: 3px !important;
+          color: #24303e;
+        }       
+         
+      }
+    }
+  }
+  .bordeinput {
+    div {
+      div {
+        border: 0 !important;
+        input {
+          background: #fff !important;
+          border: 1px solid #a8babc !important;
+          border-radius: 3px !important;
+          color: #24303e;
+        }
+      }
+    }
+  }
+  .bordeselect {
+    span.ms-Dropdown-title {
+      background: #fff !important;
+      border: 1px solid #a8babc !important;
+      border-radius: 3px !important;
+      color: #24303e;
+    }
+  }
+  .bordecheck {
+    margin-top: 6px;
+    label {
+      div {
+        border: 3px solid #ff5505 !important;
+        border-radius: 3px;
+        i {
+          background: #fff;
+          color: #ff5505;
+        }
+      }
+    }
+  }
+
+}
+
+.separadorMinimo {
+  width: 100%;
+  height: 10px;
+  display: table;
+}
+
+
+.centrado {
+  text-align: center;
+  justify-content: center;
+}
+
+
+.izquierda {
+  text-align: right;
+  justify-content: right;
+}
+
+.imgSize {
+  width: 100%;
+  height: 100%;
+  .ui-carousel {
+    width: 100%;
+
+    div[data-aa-class='Carousel__itemsContainerWrapper']{
+      width: 100%;
+    }
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+  
+}
+
+.ms-ComboBox-callout {
+  width: 7%;
+}
+.carouselImageContent {
+  height: 500px;
+}
+
+.pnpImageCarousel {  
+  .carouselContent {  
+    height: 500px !important;  
+  } 
+
+  div[class^="container_"] {  
+    height: 500px !important;  
+  } 
+
+  div[class^="details"] {  
+    top: 80% !important;  
+
+    span {  
+      font-size: 15px !important;  
+    }  
+
+    span[class^="title"] {  
+      font-size: 20px !important;  
+    }  
+  }  
+    
+  .carouselButtonsContainer button {  
+    min-width: 32px !important;  
+  }  
+} 
+
+.contenedorCumpleanios{
+  position: relative;
+
+  .sectionCumpleanios{
+    position: absolute;
+    top: 55%;
+    width: 60%;
+    height: 40%;
+    left: 2%;
+    
+
+    .textCumpleanios{
+      font-size: 15px;
+      font-family: cursive;
+      text-align: 'center';
+      display: 'flex';
+      justify-content: 'center';
+      width: auto;
+      margin-top: 30px;
+      padding-left: 10px;
+      font-weight: bold;
+    }
+  }
+  
+  
+  .imgCumpleanios{
+    width: 100%;
+    height: auto;
+    opacity: 0.8;
+    
+  }
+}
+.imgAllCumpleanios{
+  cursor: pointer;
+}
+

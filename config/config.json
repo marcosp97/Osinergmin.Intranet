@@ -25,12 +25,22 @@
           "manifest": "./src/webparts/wpPaginasFavoritas/WpPaginasFavoritasWebPart.manifest.json"
         }
       ]
+    },
+    "wp-banner-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/wpBanner/WpBannerWebPart.js",
+          "manifest": "./src/webparts/wpBanner/WpBannerWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
   "localizedResources": {
     "WpAplicacionesUsuarioWebPartStrings": "lib/webparts/wpAplicacionesUsuario/loc/{locale}.js",
     "WpAplicacionesOfficeWebPartStrings": "lib/webparts/wpAplicacionesOffice/loc/{locale}.js",
-    "WpPaginasFavoritasWebPartStrings": "lib/webparts/wpPaginasFavoritas/loc/{locale}.js"
+    "WpPaginasFavoritasWebPartStrings": "lib/webparts/wpPaginasFavoritas/loc/{locale}.js",
+    "WpBannerWebPartStrings": "lib/webparts/wpBanner/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
   }
 }
