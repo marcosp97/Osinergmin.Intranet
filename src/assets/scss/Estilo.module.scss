@@ -307,15 +307,20 @@
   }  
 } 
 
+
+.imgAll{
+  cursor: pointer;
+}
+
 .contenedorCumpleanios{
   position: relative;
+  cursor: pointer;
 
   .sectionCumpleanios{
     position: absolute;
-    top: 55%;
-    width: 60%;
-    height: 40%;
+    top: 58%;
     left: 2%;
+    width: 80%;
     
 
     .textCumpleanios{
@@ -325,8 +330,25 @@
       display: 'flex';
       justify-content: 'center';
       width: auto;
-      margin-top: 30px;
+      font-weight: bold;
       padding-left: 10px;
+      min-width: 19%;
+    }
+  }
+
+  .sectionHeaderCumpleanios{
+    position: absolute;
+    top: 17%;
+    left: 33%;
+    z-index: 1;
+
+    .textHeaderCumpleanios{
+      font-size: 170%;
+      font-family: cursive;
+      text-align: 'center';
+      display: 'flex';
+      justify-content: 'center';
+      width: auto;
       font-weight: bold;
     }
   }
@@ -339,7 +361,144 @@
     
   }
 }
-.imgAllCumpleanios{
+
+
+.contenedorFeriado{
+  position: relative;
   cursor: pointer;
+
+  .sectionFeriado{
+    position: absolute;
+    top: 75%;
+    width: 100%;
+    
+
+    .textFeriado{
+      font-size: 15px;
+      font-family: cursive;
+      text-align: 'center';
+      display: 'flex';
+      justify-content: 'center';
+      width: auto;
+      font-weight: bold;
+      padding-left: 10px;
+      min-width: 19%;
+    }
+  }
+
+  .sectionHeaderFeriado{
+    position: absolute;
+    top: 6.5%;
+    left: 37%;
+    z-index: 1;
+
+    .textHeaderFeriado{
+      font-size: 170%;
+      font-family: cursive;
+      text-align: 'center';
+      display: 'flex';
+      justify-content: 'center';
+      width: auto;
+      font-weight: bold;
+    }
+  }
+  
+  
+  .imgFeriado{
+    width: 100%;
+    height: auto;
+    opacity: 0.8;
+    
+  }
 }
 
+.contenedorAniversario{
+  position: relative;
+  cursor: pointer;
+
+  .sectionAniversario{
+    position: absolute;
+    top: 33%;
+    left: 11%;
+    width: 77%;
+    
+
+    .textAniversario{
+      font-size: 15px;
+      font-family: cursive;
+      text-align: 'center';
+      display: 'flex';
+      justify-content: 'center';
+      width: auto;
+      font-weight: bold;
+      padding-left: 10px;
+      min-width: 19%;
+    }
+  }
+
+  .sectionHeaderAniversario{
+    position: absolute;
+    top: 18%;
+    left: 33%;
+    z-index: 1;
+
+    .textHeaderAniversario{
+      font-size: 170%;
+      font-family: cursive;
+      text-align: 'center';
+      display: 'flex';
+      justify-content: 'center';
+      width: auto;
+      font-weight: bold;
+    }
+  }
+  
+  
+  .imgAniversario{
+    width: 100%;
+    height: auto;
+    opacity: 0.8;
+    
+  }
+}
+
+
+.contenedorAplicacion {
+  .spanHeader {
+    font-weight: bold;
+    color: #22375a;
+    text-align: center;
+    margin: 10px;
+  }
+  div{
+    width: 100%;
+  }
+}
+
+.separador {
+  padding: 0px;
+  width: 100%;
+  height: 1px;
+}
+
+.sectionTilte {
+  cursor: pointer;
+  align-items: initial;
+  width: 100%;
+
+  span {
+    font-size: 12px;
+    margin-left: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+.sectionTilte:hover{
+  background: #005fa9;
+  color: #e8e8e8;
+}
+
+.separador::before {
+  background-color: #D9D9D9;
+}

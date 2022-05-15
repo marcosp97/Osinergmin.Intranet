@@ -3,4 +3,6 @@ interface IQueryParams {
     expand?: string[]
     filter?: string
     top?: number
+    orderby?: string
+    ascending?: boolean
 }

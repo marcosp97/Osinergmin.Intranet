@@ -15,16 +15,18 @@ import { FileBE } from "../Entity/FileBE";
 const map_entity = (entity: BannerBE): BannerVM =>({
     Id: entity.Id,
     Filename: entity.Filename,
-    EsPlantillaCumpleanios: entity.EsPlantillaCumpleanios,
-    URL: entity.URL
+    TipoPlantilla: entity.TipoPlantilla,
+    URL: entity.URL,
+    Activo: entity.Activo
 })
 
 const map_file = (entity: FileBE): BannerVM =>({
     Id: entity?.ListItemAllFields?.Id,
     Filename: entity?.Name,
-    EsPlantillaCumpleanios: entity?.ListItemAllFields?.EsPlantillaCumpleanios,
+    TipoPlantilla: entity?.ListItemAllFields?.TipoPlantilla,
     URL: entity?.ListItemAllFields?.URL,
-    ServerRelativeUrl: entity?.ServerRelativeUrl
+    ServerRelativeUrl: entity?.ServerRelativeUrl,
+    Activo: entity?.ListItemAllFields?.Activo
 })
 
 const getFileAll = async(sp: SPFI, params: IQueryParams): Promise<BannerVM[]> => {
@@ -33,6 +35,7 @@ const getFileAll = async(sp: SPFI, params: IQueryParams): Promise<BannerVM[]> =>
                                 .filter(params.filter || "")
                                 .select(...ArrayHelper(params.select))
                                 .expand(...ArrayHelper(params.expand))
+                                .orderBy(params.orderby || "ListItemAllFields/Id", params.ascending || true)
                                 .top(params.top || 5000)
                                 ()
     console.log(lst)
@@ -47,6 +50,7 @@ const getAll = async(sp: SPFI, params: IQueryParams): Promise<BannerVM[]> => {
                                 .filter(params.filter || "")
                                 .select(...ArrayHelper(params.select))
                                 .expand(...ArrayHelper(params.expand))
+                                .orderBy(params.orderby || "Id", params.ascending || true)
                                 .top(params.top || 5000)
                                 ()
     console.log(data)

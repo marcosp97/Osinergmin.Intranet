@@ -33,6 +33,14 @@
           "manifest": "./src/webparts/wpBanner/WpBannerWebPart.manifest.json"
         }
       ]
+    },
+    "wp-aplicaciones-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/wpAplicaciones/WpAplicacionesWebPart.js",
+          "manifest": "./src/webparts/wpAplicaciones/WpAplicacionesWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
@@ -41,6 +49,7 @@
     "WpAplicacionesOfficeWebPartStrings": "lib/webparts/wpAplicacionesOffice/loc/{locale}.js",
     "WpPaginasFavoritasWebPartStrings": "lib/webparts/wpPaginasFavoritas/loc/{locale}.js",
     "WpBannerWebPartStrings": "lib/webparts/wpBanner/loc/{locale}.js",
-    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
+    "WpAplicacionesWebPartStrings": "lib/webparts/wpAplicaciones/loc/{locale}.js"
   }
 }

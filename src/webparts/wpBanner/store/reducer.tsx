@@ -7,6 +7,11 @@ export interface IState {
     }
     usuarioActual: UsuarioBE
     banners: BannerVM[]
+    usuariosRegistrados: UsuarioRegistradoVM[]
+    aniversarios: FestividadVM[]
+    cumpleanios: FestividadVM[]
+    cumpleaniosnext: FestividadVM[]
+    feriados: FestividadVM[]
 }
 
 export const InitialState: IState = {
@@ -14,7 +19,12 @@ export const InitialState: IState = {
         isLoading: false
     },
     usuarioActual: {},
-    banners: []
+    banners: [],
+    usuariosRegistrados: [],
+    aniversarios: [],
+    cumpleanios: [],
+    feriados: [],
+    cumpleaniosnext: []
 }
 
 export const Reducer = (state: IState, action: IAction): IState => {
@@ -44,6 +54,31 @@ export const Reducer = (state: IState, action: IAction): IState => {
             return {
                 ...state,
                 banners: action.payload
+            }
+        case ActionReducer.SET_USUARIOSREGISTRADOS:
+            return {
+                ...state,
+                usuariosRegistrados: action.payload
+            }
+        case ActionReducer.SET_ANIVERSARIOS:
+            return {
+                ...state,
+                aniversarios: action.payload
+            }
+        case ActionReducer.SET_CUMPLEANIOS:
+            return {
+                ...state,
+                cumpleanios: action.payload
+            }
+        case ActionReducer.SET_CUMPLEANIOSNEXT:
+            return {
+                ...state,
+                cumpleaniosnext: action.payload
+            }
+        case ActionReducer.SET_FERIADOS:
+            return {
+                ...state,
+                feriados: action.payload
             }
         default:
             return state

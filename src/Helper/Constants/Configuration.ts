@@ -1,5 +1,10 @@
 export enum LIST {
 	Banner = 'Banner',
+    UsuarioRegistrado = 'Usuarios registrados',
+    Feriados = 'Feriados',
+    Aniversarios = 'Aniversarios',
+    Cumpleanios = 'Cumpleaños',
+    Aplicaciones = 'Aplicaciones',
 }
 
 
@@ -72,6 +77,13 @@ export enum AREA {
 	COM = "COM",
 	OPE = "OPE",
     CAP = "CAP",
+}
+
+export enum TIPO {
+	BANNER = "Banner",
+	CUMPLEANIOS = "Cumpleaños",
+	ANIVERSARIO = "Aniversario",
+    FERIADO = "Feriado",
 }
 
 export enum LibraryName {

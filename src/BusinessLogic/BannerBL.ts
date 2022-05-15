@@ -7,9 +7,21 @@ import { BuildQuery, Eq } from "../Helper/FilterOperator"
 export const buildQueryGetAll = (filterValues: BannerVM) => {
     let logicals = [
 		filterValues?.Id && Eq('Id', filterValues?.Id),
-        filterValues?.EsPlantillaCumpleanios && Eq('EsPlantillaCumpleanios', filterValues?.EsPlantillaCumpleanios),
+        filterValues?.TipoPlantilla && Eq('TipoPlantilla', filterValues?.TipoPlantilla),
         filterValues?.Filename && Eq('Filename', filterValues?.Filename),
+        filterValues?.Activo && Eq('Activo', filterValues?.Activo),
         filterValues?.URL && Eq('URL', filterValues?.URL),
+	]
+	return BuildQuery({ parameters: logicals, operator: 'and' })
+}
+
+export const buildQueryFileGetAll = (filterValues: BannerVM) => {
+    let logicals = [
+		filterValues?.Id && Eq('ListItemAllFields/Id', filterValues?.Id),
+        filterValues?.TipoPlantilla && Eq('ListItemAllFields/TipoPlantilla', filterValues?.TipoPlantilla),
+        filterValues?.Filename && Eq('ListItemAllFields/Filename', filterValues?.Filename),
+        filterValues?.Activo && Eq('ListItemAllFields/Activo', filterValues?.Activo),
+        filterValues?.URL && Eq('ListItemAllFields/URL', filterValues?.URL),
 	]
 	return BuildQuery({ parameters: logicals, operator: 'and' })
 }
@@ -17,12 +29,12 @@ export const buildQueryGetAll = (filterValues: BannerVM) => {
 const getFileAll = (sp: SPFI, obj: BannerVM): Promise<BannerVM[]> => {
     const QP: IQueryParams = {
 		select: [],
-		filter: buildQueryGetAll(obj),
+		filter: buildQueryFileGetAll(obj),
         expand: [
             'ListItemAllFields',
             'Author'
         ],
-        top: obj?.top
+        top: obj?.top,
 	}
 
     return BannerDA.getFileAll(sp, QP)
@@ -33,9 +45,10 @@ const getAll = (sp: SPFI, obj: BannerVM): Promise<BannerVM[]> => {
     const QP: IQueryParams = {
 		select: [
             'Id',
-			'EsPlantillaCumpleanios',
+			'TipoPlantilla',
             'Filename',
-            'URL'
+            'URL',
+            'Activo',
 		],
 		filter: buildQueryGetAll(obj),
         top: obj?.top
@@ -49,9 +62,10 @@ const getById = (sp: SPFI, entityId: number): Promise<BannerVM[]> => {
     const QP: IQueryParams = {
 		select: [
             'Id',
-			'EsPlantillaCumpleanios',
+			'TipoPlantilla',
             'Filename',
-            'URL'
+            'URL',
+            'Activo',
 		],
 	}
 

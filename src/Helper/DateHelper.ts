@@ -60,7 +60,7 @@ export const MONTHS = [
 	'Octubre',
 	'Noviembre',
 	'Diciembre',
-].map((v, i) => ({ id: i + 1, name: v }))
+].map((v, i) => ({ id: i, name: v }))
 
 export const YEARS = [
 	'2022',
