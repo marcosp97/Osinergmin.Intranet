@@ -267,8 +267,9 @@ export const BannerResultado: React.FC = ({
         <>
           <ImageGallery 
             autoPlay={true}
+            slideInterval={6000}
             showFullscreenButton={false}
-            showPlayButton={false}
+            showPlayButton={true}
             showBullets={true}
             showThumbnails={false}
             items={state.banners} 

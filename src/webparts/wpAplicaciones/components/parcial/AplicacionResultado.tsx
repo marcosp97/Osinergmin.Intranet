@@ -39,6 +39,10 @@ export const AplicacionResultado: React.FC = ({
     }
   }
 
+  const classNames = mergeStyleSets({
+    header: [styles.contenedorSectionAplicacion, styles.contenedorDiv],
+  });
+
 
 
   React.useEffect(() => {
@@ -50,14 +54,14 @@ export const AplicacionResultado: React.FC = ({
           {state.aplicaciones?.map(x => {
             return (
               <>
-                <Stack horizontalAlign='start' className={styles.contenedorAplicacion}>
-                    <Stack verticalAlign='center' horizontalAlign='start' className={styles.spanHeader}>
+                <Stack horizontalAlign='start' className={classNames.header}>
+                    <Stack verticalAlign='center' horizontalAlign='start' className={styles.spanSection}>
                         <span>{x.Categoria}</span>
                     </Stack>
                     <Separator className={styles.separador} />
                 </Stack>
 
-                <Stack wrap horizontal>
+                <Stack wrap horizontal className={styles.contenedorDiv}>
                   {x.SubCategorias?.map(y => {
                     return (
                         <Stack horizontalAlign='center' className={styles.contenedorAplicacion}>
@@ -80,8 +84,6 @@ export const AplicacionResultado: React.FC = ({
                       )
                     })}
                 </Stack>
-                <br/>
-                <Separator className={styles.separador} />
                 <br/>
                 <br/>
               </>
