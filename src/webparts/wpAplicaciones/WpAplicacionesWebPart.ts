@@ -15,6 +15,7 @@ import { spfi, SPFx } from "@pnp/sp";
 
 export interface IWpAplicacionesWebPartProps {
   description: string;
+  lista: string;
 }
 
 export default class WpAplicacionesWebPart extends BaseClientSideWebPart<IWpAplicacionesWebPartProps> {
@@ -28,7 +29,8 @@ export default class WpAplicacionesWebPart extends BaseClientSideWebPart<IWpApli
       WpAplicaciones,
       {
         description: this.properties.description,
-        Contexto: spfi().using(SPFx(this.context))
+        Contexto: spfi().using(SPFx(this.context)),
+        lista: this.properties.lista
       }
     );
 
@@ -41,6 +43,27 @@ export default class WpAplicacionesWebPart extends BaseClientSideWebPart<IWpApli
 
   protected get dataVersion(): Version {
     return Version.parse('1.0');
+  }
+
+  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
+    return {
+      pages: [
+        {
+          header: {
+            description: strings.PropertyPaneDescription
+          },
+          groups: [
+            {
+              groupFields: [
+                PropertyPaneTextField('lista', {
+                  label: 'Nombre Lista'
+                })
+              ]
+            }
+          ],
+        }
+      ]
+    };
   }
 
 }

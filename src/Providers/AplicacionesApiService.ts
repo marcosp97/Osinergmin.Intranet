@@ -14,43 +14,34 @@ const Agrupar = (lst: AplicacionesVM[], name: string): AplicacionesVM[] => {
     }, [])
 }
 
-const getAll = async(sp: SPFI, obj: AplicacionesVM): Promise<AplicacionesVM[]> => {
-    return await AplicacionesBL.getAll(sp, obj)
+const getAll = async(sp: SPFI, obj: AplicacionesVM, lista: string): Promise<AplicacionesVM[]> => {
+    return await AplicacionesBL.getAll(sp, obj, lista)
 }
 
-const getAllDinamico = async(sp: SPFI, obj: AplicacionesVM): Promise<AplicacionesDinamicoVM[]> => {
-    const lst = await AplicacionesBL.getAll(sp, obj)
+const getAllDinamico = async(sp: SPFI, obj: AplicacionesVM, lista: string): Promise<AplicacionesDinamicoVM[]> => {
+    const lst = await AplicacionesBL.getAll(sp, obj, lista)
     let listaAgrupados: AplicacionesVM[] = [];
     listaAgrupados = Agrupar(lst, "Categoria")
-
-    const lstRetorno = listaAgrupados?.map(x => {
-        const listaSub = lst?.filter(m => m.Categoria == x.Categoria);
-        let listaSubAgrupados = Agrupar(listaSub, "SubCategoria")
-        const obj:AplicacionesDinamicoVM = {
-            Categoria: x.Categoria,
-            SubCategorias: listaSubAgrupados.map(y => {
-                const objSub: AplicacionesSubCategoriaVM = {
-                    SubCategoria: y.SubCategoria,
-                    Aplicaciones: lst?.filter(n => n.Categoria == y.Categoria && n.SubCategoria == y.SubCategoria).map(z => {
-                        const objApp: AplicacionesItemVM = {
-                            Id: z.Id,
-                            Title: z.Title,
-                            URL: z.URL
-                        }
-                        return objApp
-                    })
+    const lstRetorno: AplicacionesDinamicoVM[] = listaAgrupados.map(y => {
+        const objSub: AplicacionesDinamicoVM = {
+            Categoria: y.Categoria,
+            Aplicaciones: lst?.filter(n => n.Categoria == y.Categoria).map(z => {
+                const objApp: AplicacionesItemVM = {
+                    Id: z.Id,
+                    Title: z.Title,
+                    URL: z.URL
                 }
-                return objSub
+                return objApp
             })
         }
-        return obj
+        return objSub
     })
 
     return lstRetorno
 }
 
-const getAllCamlQuery = async(sp: SPFI, QueryCaml: string): Promise<AplicacionesVM[]> => {
-    return await AplicacionesBL.getAllCamlQuery(sp, QueryCaml)
+const getAllCamlQuery = async(sp: SPFI, QueryCaml: string, lista: string): Promise<AplicacionesVM[]> => {
+    return await AplicacionesBL.getAllCamlQuery(sp, QueryCaml, lista)
 }
 
 export const AplicacionesApiService = {

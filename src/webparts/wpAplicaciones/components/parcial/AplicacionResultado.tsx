@@ -11,14 +11,16 @@ export const AplicacionResultado: React.FC = ({
 
 }) => {
 
-  const { state, dispatch, ui, sp} = React.useContext(AppContext) 
+  const { state, dispatch, ui, sp, lista} = React.useContext(AppContext) 
 
   const onFilter = (_e: any) => {
 
     ui.showLoading()
-    const oRequest: AplicacionesVM = {}
+    const oRequest: AplicacionesVM = {
+      Activo: true
+    }
     AplicacionesApiService
-        .getAllDinamico(sp, oRequest)
+        .getAllDinamico(sp, oRequest, lista)
         .then(values => {
             dispatch({ type: ActionReducer.SET_APLICACIONES, payload: values })
             return
@@ -51,44 +53,36 @@ export const AplicacionResultado: React.FC = ({
 
     return (
         <>
-          {state.aplicaciones?.map(x => {
-            return (
-              <>
-                <Stack horizontalAlign='start' className={classNames.header}>
-                    <Stack verticalAlign='center' horizontalAlign='start' className={styles.spanSection}>
-                        <span>{x.Categoria}</span>
-                    </Stack>
-                    <Separator className={styles.separador} />
-                </Stack>
+          <Stack horizontalAlign='start' className={styles.contenedorSectionAplicacion}>
+              <Stack verticalAlign='center' horizontalAlign='start' className={styles.spanSection}>
+                  <span>{lista}</span>
+              </Stack>
+              <Separator className={styles.separador} />
+          </Stack>
 
-                <Stack wrap horizontal className={styles.contenedorDiv}>
-                  {x.SubCategorias?.map(y => {
-                    return (
-                        <Stack horizontalAlign='center' className={styles.contenedorAplicacion}>
-                            <Stack verticalAlign='center' horizontalAlign='center' className={styles.spanHeader}>
-                                <span>{y.SubCategoria}</span>
+          <Stack wrap horizontal className={styles.contenedorDiv}>
+            {state?.aplicaciones?.map(y => {
+              return (
+                  <Stack horizontalAlign='center' className={styles.contenedorAplicacion}>
+                      <Stack verticalAlign='center' horizontalAlign='center' className={styles.spanHeader}>
+                          <span>{y.Categoria}</span>
+                      </Stack>
+                      <Separator className={styles.separador} />
+
+                      {y.Aplicaciones?.map(z => {
+                        return (
+                          <>
+                            <Stack verticalAlign='center' horizontalAlign='center' className={styles.sectionTilte} onClick={() => onClick(z.URL)}>
+                                <span>{z.Title}</span>
                             </Stack>
                             <Separator className={styles.separador} />
-
-                            {y.Aplicaciones?.map(z => {
-                              return (
-                                <>
-                                  <Stack verticalAlign='center' horizontalAlign='center' className={styles.sectionTilte} onClick={() => onClick(z.URL)}>
-                                      <span>{z.Title}</span>
-                                  </Stack>
-                                  <Separator className={styles.separador} />
-                                </>
-                              )
-                            })}
-                        </Stack>
-                      )
-                    })}
-                </Stack>
-                <br/>
-                <br/>
-              </>
-            )
-          })}
+                          </>
+                        )
+                      })}
+                  </Stack>
+                )
+              })}
+          </Stack>
         </>
     )
 }

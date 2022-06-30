@@ -14,7 +14,8 @@ export interface IAppContext {
         showLoading: () => void
         hideLoading: () => void
     },
-    sp: SPFI
+    sp: SPFI,
+    lista: string
 }
 
 export const AppContext = React.createContext<IAppContext>({
@@ -25,15 +26,18 @@ export const AppContext = React.createContext<IAppContext>({
         showLoading: () => null,
         hideLoading: () => null
     },
-    sp: null
+    sp: null,
+    lista: ""
 })
 
 export interface IAppProviderProps {
-    sp: SPFI
+    sp: SPFI,
+    lista: string
 }
 
 export const AppProvider: React.FC<IAppProviderProps> = ({
     sp,
+    lista,
     children
 }) => {
     const [state, dispatch ] = React.useReducer(Reducer, InitialState)
@@ -74,7 +78,8 @@ export const AppProvider: React.FC<IAppProviderProps> = ({
                 dispatch,
                 loadInitialState,
                 ui,
-                sp
+                sp,
+                lista
             }}
         >
             {children}

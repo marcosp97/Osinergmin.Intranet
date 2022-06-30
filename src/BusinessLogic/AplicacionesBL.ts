@@ -7,47 +7,47 @@ export const buildQueryGetAll = (filterValues: AplicacionesVM) => {
     let logicals = [
 		filterValues?.Id && Eq('Id', filterValues?.Id),
         filterValues?.Categoria && Eq('Categoria', getLocalISOTime(filterValues?.Categoria)),
-        filterValues?.SubCategoria && Eq('SubCategoria', filterValues?.SubCategoria),
+        filterValues?.Activo && Eq('Activo', filterValues?.Activo),
         filterValues?.Title && Eq('Title', filterValues?.Title),
 	]
 	return BuildQuery({ parameters: logicals, operator: 'and' })
 }
 
 
-const getAll = (sp: SPFI, obj: AplicacionesVM): Promise<AplicacionesVM[]> => {
+const getAll = (sp: SPFI, obj: AplicacionesVM, lista: string): Promise<AplicacionesVM[]> => {
     const QP: IQueryParams = {
 		select: [
             'Id',
 			'Title',
             'Categoria',
-            'SubCategoria',
             'URL',
+            'Activo'
 		],
 		filter: buildQueryGetAll(obj),
         top: obj?.top
 	}
 
-    return AplicacionesDA.getAll(sp, QP)
+    return AplicacionesDA.getAll(sp, QP, lista)
 }
 
-const getAllCamlQuery = (sp: SPFI, QueryCaml: string): Promise<AplicacionesVM[]> => {
+const getAllCamlQuery = (sp: SPFI, QueryCaml: string, lista: string): Promise<AplicacionesVM[]> => {
 
-    return AplicacionesDA.getAllCamlQuery(sp, QueryCaml)
+    return AplicacionesDA.getAllCamlQuery(sp, QueryCaml, lista)
 }
 
-const getById = (sp: SPFI, entityId: number): Promise<AplicacionesVM[]> => {
+const getById = (sp: SPFI, entityId: number, lista: string): Promise<AplicacionesVM[]> => {
     
     const QP: IQueryParams = {
 		select: [
             'Id',
 			'Title',
             'Categoria',
-            'SubCategoria',
             'URL',
+            'Activo'
 		],
 	}
 
-    return AplicacionesDA.getById(sp, QP, entityId)
+    return AplicacionesDA.getById(sp, QP, entityId, lista)
 }
 
 export const AplicacionesBL = {

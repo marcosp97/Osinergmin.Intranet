@@ -9,13 +9,14 @@ export default class WpAplicaciones extends React.Component<IWpAplicacionesProps
   public render(): React.ReactElement<IWpAplicacionesProps> {
     const {
       description,
-      Contexto
+      Contexto,
+      lista
     } = this.props;
 
     return (
       <main>
         <Layout>
-          <AppProvider {...{ sp: Contexto}}>
+          <AppProvider {...{ sp: Contexto, lista: lista}}>
             <AplicacionContenedor></AplicacionContenedor>
           </AppProvider>
         </Layout>

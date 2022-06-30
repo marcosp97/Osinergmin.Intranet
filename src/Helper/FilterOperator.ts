@@ -91,7 +91,7 @@ const LogicalOperator = (logicals: any[], operator: string) => {
 const Sanitaze = (val: any) => {
     const map: any = {
         "string": () =>  `'${val}'`,
-        "boolean": () => val ? `true` : `false`,
+        "boolean": () => val ? `1` : `0`,
         "number": () => Number(val),
         "object": () => val
     };
