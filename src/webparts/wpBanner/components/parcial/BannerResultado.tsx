@@ -266,7 +266,7 @@ export const BannerResultado: React.FC = ({
     <>
       <ImageGallery
         autoPlay={true}
-        slideInterval={Number(duracion) ?? 0}
+        slideInterval={duracion ? Number(duracion) : 0}
         showFullscreenButton={false}
         showPlayButton={true}
         showBullets={true}
