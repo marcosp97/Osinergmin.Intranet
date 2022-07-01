@@ -6,18 +6,19 @@ import { IWpBannerProps } from './IWpBannerProps';
 
 
 export default class WpBanner extends React.Component<IWpBannerProps, {}> {
-  constructor(props: IWpBannerProps) {  
+  constructor(props: IWpBannerProps) {
     super(props);
-  }  
+  }
   public render(): React.ReactElement<IWpBannerProps> {
     const {
       description,
-      Contexto
+      Contexto,
+      duracion
     } = this.props;
     return (
       <main>
         <Layout>
-          <AppProvider {...{ sp: Contexto}}>
+          <AppProvider {...{ sp: Contexto, duracion: duracion }}>
             <BannerContenedor></BannerContenedor>
           </AppProvider>
         </Layout>

@@ -2,7 +2,7 @@ import { Image, ImageFit, IStackTokens, mergeStyleSets, Stack } from '@fluentui/
 import * as React from 'react'
 import { AppContext } from '../../store/context'
 import styles from '../../../../assets/scss/Estilo.module.scss'
-import { MDBCarousel, MDBCarouselInner, MDBContainer, MDBCarouselItem, MDBCarouselCaption, MDBCarouselElement,  } from 'mdb-react-ui-kit';
+import { MDBCarousel, MDBCarouselInner, MDBContainer, MDBCarouselItem, MDBCarouselCaption, MDBCarouselElement, } from 'mdb-react-ui-kit';
 import { BannerApiService } from '../../../../Providers/BannerApiService';
 import { ActionReducer } from '../../store/action';
 import "react-image-gallery/styles/scss/image-gallery.scss";
@@ -19,7 +19,7 @@ export const BannerResultado: React.FC = ({
 
 }) => {
 
-  const { state, dispatch, ui, sp} = React.useContext(AppContext) 
+  const { state, dispatch, ui, sp, duracion } = React.useContext(AppContext)
 
   const onFilter = (_e: any) => {
 
@@ -28,15 +28,15 @@ export const BannerResultado: React.FC = ({
       Activo: true
     }
     BannerApiService
-        .getFileAllWithNext(sp, oRequest)
-        .then(values => {
-            dispatch({ type: ActionReducer.SET_BANNERS, payload: values })
-            return
-        })
-        .catch(err => {
-            console.error(err)
-        })
-        .then(ui.hideLoading)
+      .getFileAllWithNext(sp, oRequest)
+      .then(values => {
+        dispatch({ type: ActionReducer.SET_BANNERS, payload: values })
+        return
+      })
+      .catch(err => {
+        console.error(err)
+      })
+      .then(ui.hideLoading)
   }
 
   const mesActual = MONTHS[new Date().getMonth()].name
@@ -50,15 +50,15 @@ export const BannerResultado: React.FC = ({
     }
     console.log(oRequest)
     CumpleaniosApiService
-        .getAll(sp, oRequest)
-        .then(values => {
-            dispatch({ type: ActionReducer.SET_CUMPLEANIOS, payload: values })
-            return
-        })
-        .catch(err => {
-            console.error(err)
-        })
-        .then(ui.hideLoading)
+      .getAll(sp, oRequest)
+      .then(values => {
+        dispatch({ type: ActionReducer.SET_CUMPLEANIOS, payload: values })
+        return
+      })
+      .catch(err => {
+        console.error(err)
+      })
+      .then(ui.hideLoading)
   }
 
   const ListarCumpleanierosMesSiguiente = () => {
@@ -69,15 +69,15 @@ export const BannerResultado: React.FC = ({
     }
     console.log(oRequest)
     CumpleaniosApiService
-        .getAll(sp, oRequest)
-        .then(values => {
-            dispatch({ type: ActionReducer.SET_CUMPLEANIOSNEXT, payload: values })
-            return
-        })
-        .catch(err => {
-            console.error(err)
-        })
-        .then(ui.hideLoading)
+      .getAll(sp, oRequest)
+      .then(values => {
+        dispatch({ type: ActionReducer.SET_CUMPLEANIOSNEXT, payload: values })
+        return
+      })
+      .catch(err => {
+        console.error(err)
+      })
+      .then(ui.hideLoading)
   }
 
   const ListarFeriados = () => {
@@ -88,15 +88,15 @@ export const BannerResultado: React.FC = ({
     }
     console.log(oRequest)
     FeriadoApiService
-        .getAll(sp, oRequest)
-        .then(values => {
-            dispatch({ type: ActionReducer.SET_FERIADOS, payload: values })
-            return
-        })
-        .catch(err => {
-            console.error(err)
-        })
-        .then(ui.hideLoading)
+      .getAll(sp, oRequest)
+      .then(values => {
+        dispatch({ type: ActionReducer.SET_FERIADOS, payload: values })
+        return
+      })
+      .catch(err => {
+        console.error(err)
+      })
+      .then(ui.hideLoading)
   }
 
   const ListarAniversarios = () => {
@@ -107,23 +107,22 @@ export const BannerResultado: React.FC = ({
     }
     console.log(oRequest)
     AniversarioApiService
-        .getAll(sp, oRequest)
-        .then(values => {
-            dispatch({ type: ActionReducer.SET_ANIVERSARIOS, payload: values })
-            return
-        })
-        .catch(err => {
-            console.error(err)
-        })
-        .then(ui.hideLoading)
+      .getAll(sp, oRequest)
+      .then(values => {
+        dispatch({ type: ActionReducer.SET_ANIVERSARIOS, payload: values })
+        return
+      })
+      .catch(err => {
+        console.error(err)
+      })
+      .then(ui.hideLoading)
   }
 
   const onClick = (obj: BannerVM) => {
-    if(obj.URL)
-    {
+    if (obj.URL) {
       var a = document.createElement('a');
-      a.target="_blank";
-      a.href= obj.URL || "#";
+      a.target = "_blank";
+      a.href = obj.URL || "#";
       a.click();
     }
   }
@@ -143,13 +142,13 @@ export const BannerResultado: React.FC = ({
         <Stack horizontal wrap className={styles.sectionHeaderCumpleanios} tokens={wrapStackTokens} onClick={() => onClick(item)}>
           <span className={styles.textHeaderCumpleanios}>Cumpleaños de {mesActual}</span>
         </Stack>
-        <img 
+        <img
           className={classNames.cumpleanios}
           src={item.ServerRelativeUrl}
           alt={item.ServerRelativeUrl || ""}
           loading="eager"
           onClick={() => onClick(item)}
-          />
+        />
         <Stack horizontal wrap className={styles.sectionCumpleanios} tokens={wrapStackTokens} onClick={() => onClick(item)}>
           {state.cumpleanios.map(x => {
             return (<span className={styles.textCumpleanios}>{x.DiaCumpleanios + " - " + x.Title}</span>)
@@ -165,13 +164,13 @@ export const BannerResultado: React.FC = ({
         <Stack horizontal wrap className={styles.sectionHeaderCumpleanios} tokens={wrapStackTokens} onClick={() => onClick(item)}>
           <span className={styles.textHeaderCumpleanios}>Cumpleaños de {mesSiguiente}</span>
         </Stack>
-        <img 
+        <img
           className={classNames.cumpleanios}
           src={item.ServerRelativeUrl}
           alt={item.ServerRelativeUrl || ""}
           loading="eager"
           onClick={() => onClick(item)}
-          />
+        />
         <Stack horizontal wrap className={styles.sectionCumpleanios} tokens={wrapStackTokens} onClick={() => onClick(item)}>
           {state.cumpleaniosnext.map(x => {
             return (<span className={styles.textCumpleanios}>{x.DiaCumpleanios + " - " + x.Title}</span>)
@@ -187,13 +186,13 @@ export const BannerResultado: React.FC = ({
         <Stack horizontal wrap className={styles.sectionHeaderFeriado} tokens={wrapStackTokens} onClick={() => onClick(item)}>
           <span className={styles.textHeaderFeriado}>Feriados de {mesActual}</span>
         </Stack>
-        <img 
+        <img
           className={classNames.feriado}
           src={item.ServerRelativeUrl}
           alt={item.ServerRelativeUrl || ""}
           loading="eager"
           onClick={() => onClick(item)}
-          />
+        />
         <Stack horizontal wrap className={styles.sectionFeriado} tokens={wrapStackTokens} onClick={() => onClick(item)}>
           {state.feriados.map(x => {
             return (<span className={styles.textFeriado}>{x.DiaCumpleanios + " - " + x.Title}</span>)
@@ -209,13 +208,13 @@ export const BannerResultado: React.FC = ({
         <Stack horizontal wrap className={styles.sectionHeaderAniversario} tokens={wrapStackTokens} onClick={() => onClick(item)}>
           <span className={styles.textHeaderAniversario}>Aniversarios de {mesActual}</span>
         </Stack>
-        <img 
+        <img
           className={classNames.aniversario}
           src={item.ServerRelativeUrl}
           alt={item.ServerRelativeUrl || ""}
           loading="eager"
           onClick={() => onClick(item)}
-          />
+        />
         <Stack horizontal wrap className={styles.sectionAniversario} tokens={wrapStackTokens} onClick={() => onClick(item)}>
           {state.aniversarios.map(x => {
             return (<span className={styles.textAniversario}>{x.DiaCumpleanios + " - " + x.Title}</span>)
@@ -227,24 +226,24 @@ export const BannerResultado: React.FC = ({
 
   const GenerarBanner = (item: BannerVM) => {
     return (
-      <img 
+      <img
         className={classNames.image}
         src={item.ServerRelativeUrl}
         alt={item.ServerRelativeUrl || ""}
         loading="eager"
         onClick={() => onClick(item)}
-        />
+      />
     )
   }
 
-  const  _myImageGalleryRenderer = (item: BannerVM) => {
+  const _myImageGalleryRenderer = (item: BannerVM) => {
     switch (item.TipoPlantilla) {
       case TIPO.BANNER:
         return GenerarBanner(item)
       case TIPO.ANIVERSARIO:
         return GenerarAniversario(item)
       case TIPO.CUMPLEANIOS:
-        if(item.EsSiguiente)
+        if (item.EsSiguiente)
           return GenerarCumpleaniosNext(item)
         else
           return GenerarCumpleanios(item)
@@ -263,19 +262,19 @@ export const BannerResultado: React.FC = ({
     ListarCumpleanierosMesSiguiente()
   }, [])
 
-    return (
-        <>
-          <ImageGallery 
-            autoPlay={true}
-            slideInterval={6000}
-            showFullscreenButton={false}
-            showPlayButton={true}
-            showBullets={true}
-            showThumbnails={false}
-            items={state.banners} 
-            renderItem={_myImageGalleryRenderer.bind(this)}
-            />
-          
-        </>
-    )
+  return (
+    <>
+      <ImageGallery
+        autoPlay={true}
+        slideInterval={Number(duracion) ?? 0}
+        showFullscreenButton={false}
+        showPlayButton={true}
+        showBullets={true}
+        showThumbnails={false}
+        items={state.banners}
+        renderItem={_myImageGalleryRenderer.bind(this)}
+      />
+
+    </>
+  )
 }

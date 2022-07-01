@@ -14,7 +14,8 @@ export interface IAppContext {
         showLoading: () => void
         hideLoading: () => void
     },
-    sp: SPFI
+    sp: SPFI,
+    duracion: string
 }
 
 export const AppContext = React.createContext<IAppContext>({
@@ -25,19 +26,22 @@ export const AppContext = React.createContext<IAppContext>({
         showLoading: () => null,
         hideLoading: () => null
     },
-    sp: null
+    sp: null,
+    duracion: '0'
 })
 
 export interface IAppProviderProps {
-    sp: SPFI
+    sp: SPFI,
+    duracion: string
 }
 
 export const AppProvider: React.FC<IAppProviderProps> = ({
     sp,
-    children
+    children,
+    duracion
 }) => {
-    const [state, dispatch ] = React.useReducer(Reducer, InitialState)
-    
+    const [state, dispatch] = React.useReducer(Reducer, InitialState)
+
     const ui = {
         showLoading: () => {
             dispatch({ type: ActionReducer.SET_IS_LOADING, payload: true })
@@ -49,9 +53,9 @@ export const AppProvider: React.FC<IAppProviderProps> = ({
 
     const loadInitialState = async () => {
         ui.showLoading()
-        
+
         const [
-            usuarioActual, 
+            usuarioActual,
         ] = await Promise.all([
             UsuarioApiService.Logeado(sp)
         ])
@@ -74,7 +78,8 @@ export const AppProvider: React.FC<IAppProviderProps> = ({
                 dispatch,
                 loadInitialState,
                 ui,
-                sp
+                sp,
+                duracion
             }}
         >
             {children}
