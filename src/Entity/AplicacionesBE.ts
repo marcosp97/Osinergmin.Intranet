@@ -1,7 +1,7 @@
 class AplicacionesBE {
     public Id?: number;
     public Title?: string;
-    public Categoria?: string;
+    public CATEGORIA?: string;
     public URL?: string;
-    public Activo?: boolean;
+    public ACTIVO?: boolean;
 }

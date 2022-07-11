@@ -1,9 +1,9 @@
 export enum LIST {
-	Banner = 'Banner',
+    Banner = 'BANNER',
     UsuarioRegistrado = 'Usuarios registrados',
-    Feriados = 'Feriados',
-    Aniversarios = 'Aniversarios',
-    Cumpleanios = 'Cumpleaños',
+    Feriados = 'FERIADOS',
+    Aniversarios = 'ANIVERSARIOS',
+    Cumpleanios = 'CUMPLEAÑOS',
     Aplicaciones = 'Aplicaciones',
 }
 
@@ -25,11 +25,11 @@ export const enum Mensaje {
     questionFinalizar = "¿Está seguro de finalizar el registro?",
     questionSalir = "¿Está seguro de salir del formulario?",
     dataExiste = "No se registraron todo(s), ya que existe registro(s) igual(es)",
-	noData = "No hay registros para mostrar",
-	actualizarRegistro = 'El registro se ha actualizado correctamente',
-	crearRegistro = 'El registro se ha creado correctamente',
-	errorValidacion = 'Por favor completar todos los campos del formulario',
-	eliminarRegistro = 'El registro se ha eliminado correctamente',
+    noData = "No hay registros para mostrar",
+    actualizarRegistro = 'El registro se ha actualizado correctamente',
+    crearRegistro = 'El registro se ha creado correctamente',
+    errorValidacion = 'Por favor completar todos los campos del formulario',
+    eliminarRegistro = 'El registro se ha eliminado correctamente',
     noParam = 'No se ha encontrado el modulo correctamente',
 }
 
@@ -54,72 +54,72 @@ export const enum MensajeBandeja {
 export const OptionSetUri = (metadata_id: string) => `GlobalOptionSetDefinitions(${metadata_id})`
 
 export enum ESTADO_GENERAL {
-	ACTIVO = 0,
-	INACTIVO = 1
+    ACTIVO = 0,
+    INACTIVO = 1
 }
 
 export enum ESTADO_CALENDARIO {
-	PENDIENTE = 100000000,
-	APROBADO = 100000001,
-	REACHAZADO = 100000002,
+    PENDIENTE = 100000000,
+    APROBADO = 100000001,
+    REACHAZADO = 100000002,
 }
 
 export enum AREA_CALENDARIO {
-	SIG = 100000000,
-	COM = 100000001,
-	OPE = 100000002,
+    SIG = 100000000,
+    COM = 100000001,
+    OPE = 100000002,
     CAP = 100000003,
     ALL = 100000004,
 }
 
 export enum AREA {
-	SIG = "SIG",
-	COM = "COM",
-	OPE = "OPE",
+    SIG = "SIG",
+    COM = "COM",
+    OPE = "OPE",
     CAP = "CAP",
 }
 
 export enum TIPO {
-	BANNER = "Banner",
-	CUMPLEANIOS = "Cumpleaños",
-	ANIVERSARIO = "Aniversario",
+    BANNER = "Banner",
+    CUMPLEANIOS = "Cumpleaños",
+    ANIVERSARIO = "Aniversario",
     FERIADO = "Feriado",
 }
 
 export enum LibraryName {
-	DocumentosOC = "Documentos OC",
+    DocumentosOC = "Documentos OC",
 }
 
 export enum Sitios {
-	Principal = "ebascdev",
+    Principal = "ebascdev",
 }
 
 
 export enum PARAMETRO {
-	URL_CORREO = "006",
+    URL_CORREO = "006",
     PLANTILLA_CORREO = "007",
     URL_PEDIDOVENTA = "008",
     CODIGO_ARTICULO_CAP = "009",
     URL_PEDIDOCOMPRA = "011",
-    BCCONECTION= "bc_connection"
+    BCCONECTION = "bc_connection"
 }
 
 export enum CODIGO_DIVISA {
-	PEN = "PEN",
+    PEN = "PEN",
     USD = "USD",
 }
 
 export enum APLICACION {
-	TODOS = "004",
+    TODOS = "004",
     Afiliacion = "1",
 }
 
 export enum MODULO {
-	Comunes = "COMUNES",
+    Comunes = "COMUNES",
 }
 
 export enum METHOD {
-	POST = "POST",
+    POST = "POST",
 }
 
 
@@ -128,7 +128,7 @@ export enum ESTADO_EMPRESA_CERTIFICADA_BASC {
     CERTIFICADA_ACTIVA = "003",
     RETIRADA = "005",
     VENCIDA = "004",
-    NA ="001"
+    NA = "001"
 }
 
 export enum ESTADO_EMPRESA_CERTIFICADA_ISO {

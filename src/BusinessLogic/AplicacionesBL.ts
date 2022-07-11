@@ -6,8 +6,8 @@ import { BuildQuery, Eq, Ge, Le } from "../Helper/FilterOperator"
 export const buildQueryGetAll = (filterValues: AplicacionesVM) => {
     let logicals = [
         filterValues?.Id && Eq('Id', filterValues?.Id),
-        filterValues?.Categoria && Eq('Categoria', getLocalISOTime(filterValues?.Categoria)),
-        Eq('Activo', filterValues?.Activo ? 1 : 0),
+        filterValues?.Categoria && Eq('CATEGORIA', getLocalISOTime(filterValues?.Categoria)),
+        Eq('ACTIVO', filterValues?.Activo ? 1 : 0),
         filterValues?.Title && Eq('Title', filterValues?.Title),
     ]
     return BuildQuery({ parameters: logicals, operator: 'and' })
@@ -19,9 +19,9 @@ const getAll = (sp: SPFI, obj: AplicacionesVM, lista: string): Promise<Aplicacio
         select: [
             'Id',
             'Title',
-            'Categoria',
+            'CATEGORIA',
             'URL',
-            'Activo'
+            'ACTIVO'
         ],
         filter: buildQueryGetAll(obj),
         top: obj?.top
@@ -41,9 +41,9 @@ const getById = (sp: SPFI, entityId: number, lista: string): Promise<Aplicacione
         select: [
             'Id',
             'Title',
-            'Categoria',
+            'CATEGORIA',
             'URL',
-            'Activo'
+            'ACTIVO'
         ],
     }
 

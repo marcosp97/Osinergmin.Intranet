@@ -9,66 +9,66 @@ import { ArrayHelper } from "../Helper/ArrayHelper";
 import { IItemAddResult, IItemUpdateResult } from "@pnp/sp/items";
 import { ICamlQuery } from "@pnp/sp/lists";
 
-const map_entity = (entity: AplicacionesBE): AplicacionesVM =>({
+const map_entity = (entity: AplicacionesBE): AplicacionesVM => ({
     Id: entity.Id,
     Title: entity.Title,
-    Categoria: entity.Categoria,
+    Categoria: entity.CATEGORIA,
     URL: entity.URL,
-    Activo: entity.Activo
+    Activo: entity.ACTIVO
 })
 
-const getAll = async(sp: SPFI, params: IQueryParams, lista: string): Promise<AplicacionesVM[]> => {
-    
+const getAll = async (sp: SPFI, params: IQueryParams, lista: string): Promise<AplicacionesVM[]> => {
+
     const data = await sp.web.lists.getByTitle(lista)
-                                .items
-                                .filter(params.filter || "")
-                                .select(...ArrayHelper(params.select))
-                                .expand(...ArrayHelper(params.expand))
-                                .orderBy(params.orderby || "Id", params.ascending || true)
-                                .top(params.top || 5000)
-                                ()
+        .items
+        .filter(params.filter || "")
+        .select(...ArrayHelper(params.select))
+        .expand(...ArrayHelper(params.expand))
+        .orderBy(params.orderby || "Id", params.ascending || true)
+        .top(params.top || 5000)
+        ()
     console.log(data)
     let lst: AplicacionesBE[] = data
     return lst?.map(x => map_entity(x))
 }
 
-const getAllCamlQuery = async(sp: SPFI, QueryCaml: string, lista: string): Promise<AplicacionesVM[]> => {
+const getAllCamlQuery = async (sp: SPFI, QueryCaml: string, lista: string): Promise<AplicacionesVM[]> => {
     const caml: ICamlQuery = {
         ViewXml: QueryCaml,
     };
     const data = await sp.web.lists.getByTitle(lista)
-                                .getItemsByCAMLQuery(caml)
+        .getItemsByCAMLQuery(caml)
     console.log(data)
     let lst: AplicacionesBE[] = data
     return lst?.map(x => map_entity(x))
 }
 
-const getById = async(sp: SPFI, params: IQueryParams, entityId: number, lista: string): Promise<AplicacionesVM[]> => {
-    
+const getById = async (sp: SPFI, params: IQueryParams, entityId: number, lista: string): Promise<AplicacionesVM[]> => {
+
     let lst: AplicacionesBE[] = await sp.web.lists.getByTitle(lista)
-                                .items
-                                .getById(entityId)
-                                .select(...ArrayHelper(params.select))
-                                .expand(...ArrayHelper(params.expand))
-                                ()
+        .items
+        .getById(entityId)
+        .select(...ArrayHelper(params.select))
+        .expand(...ArrayHelper(params.expand))
+        ()
     return lst?.map(x => map_entity(x))
 }
 
-const create = async(sp: SPFI, entity: any, lista: string): Promise<AplicacionesVM> => {
-    
+const create = async (sp: SPFI, entity: any, lista: string): Promise<AplicacionesVM> => {
+
     let objAdd: IItemAddResult = await sp.web.lists.getByTitle(lista)
-                                .items
-                                .add(entity)
+        .items
+        .add(entity)
     const data: AplicacionesBE = objAdd.data
     return map_entity(data)
 }
 
-const update = async(sp: SPFI, entity: any, entityId: number, lista: string): Promise<AplicacionesVM> => {
-    
+const update = async (sp: SPFI, entity: any, entityId: number, lista: string): Promise<AplicacionesVM> => {
+
     let objUpdate: IItemUpdateResult = await sp.web.lists.getByTitle(lista)
-                                .items
-                                .getById(entityId)
-                                .update(entity)
+        .items
+        .getById(entityId)
+        .update(entity)
     const data: AplicacionesBE = entity
     return map_entity(data)
 }
