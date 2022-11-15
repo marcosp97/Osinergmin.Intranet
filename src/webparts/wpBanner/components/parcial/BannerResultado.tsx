@@ -42,81 +42,81 @@ export const BannerResultado: React.FC = ({
   const mesActual = MONTHS[new Date().getMonth()].name
   const mesSiguiente = MONTHS[new Date().getMonth() + 1].name
 
-  const ListarCumpleanieros = () => {
-    ui.showLoading()
-    const oRequest: FestividadVM = {
-      MesCumpleanios: mesActual,
-      top: 12
-    }
-    console.log(oRequest)
-    CumpleaniosApiService
-      .getAll(sp, oRequest)
-      .then(values => {
-        dispatch({ type: ActionReducer.SET_CUMPLEANIOS, payload: values })
-        return
-      })
-      .catch(err => {
-        console.error(err)
-      })
-      .then(ui.hideLoading)
-  }
+  // const ListarCumpleanieros = () => {
+  //   ui.showLoading()
+  //   const oRequest: FestividadVM = {
+  //     MesCumpleanios: mesActual,
+  //     top: 12
+  //   }
+  //   console.log(oRequest)
+  //   CumpleaniosApiService
+  //     .getAll(sp, oRequest)
+  //     .then(values => {
+  //       dispatch({ type: ActionReducer.SET_CUMPLEANIOS, payload: values })
+  //       return
+  //     })
+  //     .catch(err => {
+  //       console.error(err)
+  //     })
+  //     .then(ui.hideLoading)
+  // }
 
-  const ListarCumpleanierosMesSiguiente = () => {
-    ui.showLoading()
-    const oRequest: FestividadVM = {
-      MesCumpleanios: mesSiguiente,
-      top: 12
-    }
-    console.log(oRequest)
-    CumpleaniosApiService
-      .getAll(sp, oRequest)
-      .then(values => {
-        dispatch({ type: ActionReducer.SET_CUMPLEANIOSNEXT, payload: values })
-        return
-      })
-      .catch(err => {
-        console.error(err)
-      })
-      .then(ui.hideLoading)
-  }
+  // const ListarCumpleanierosMesSiguiente = () => {
+  //   ui.showLoading()
+  //   const oRequest: FestividadVM = {
+  //     MesCumpleanios: mesSiguiente,
+  //     top: 12
+  //   }
+  //   console.log(oRequest)
+  //   CumpleaniosApiService
+  //     .getAll(sp, oRequest)
+  //     .then(values => {
+  //       dispatch({ type: ActionReducer.SET_CUMPLEANIOSNEXT, payload: values })
+  //       return
+  //     })
+  //     .catch(err => {
+  //       console.error(err)
+  //     })
+  //     .then(ui.hideLoading)
+  // }
 
-  const ListarFeriados = () => {
-    ui.showLoading()
-    const oRequest: FestividadVM = {
-      MesCumpleanios: mesActual,
-      top: 12
-    }
-    console.log(oRequest)
-    FeriadoApiService
-      .getAll(sp, oRequest)
-      .then(values => {
-        dispatch({ type: ActionReducer.SET_FERIADOS, payload: values })
-        return
-      })
-      .catch(err => {
-        console.error(err)
-      })
-      .then(ui.hideLoading)
-  }
+  // const ListarFeriados = () => {
+  //   ui.showLoading()
+  //   const oRequest: FestividadVM = {
+  //     MesCumpleanios: mesActual,
+  //     top: 12
+  //   }
+  //   console.log(oRequest)
+  //   FeriadoApiService
+  //     .getAll(sp, oRequest)
+  //     .then(values => {
+  //       dispatch({ type: ActionReducer.SET_FERIADOS, payload: values })
+  //       return
+  //     })
+  //     .catch(err => {
+  //       console.error(err)
+  //     })
+  //     .then(ui.hideLoading)
+  // }
 
-  const ListarAniversarios = () => {
-    ui.showLoading()
-    const oRequest: FestividadVM = {
-      MesCumpleanios: mesActual,
-      top: 12
-    }
-    console.log(oRequest)
-    AniversarioApiService
-      .getAll(sp, oRequest)
-      .then(values => {
-        dispatch({ type: ActionReducer.SET_ANIVERSARIOS, payload: values })
-        return
-      })
-      .catch(err => {
-        console.error(err)
-      })
-      .then(ui.hideLoading)
-  }
+  // const ListarAniversarios = () => {
+  //   ui.showLoading()
+  //   const oRequest: FestividadVM = {
+  //     MesCumpleanios: mesActual,
+  //     top: 12
+  //   }
+  //   console.log(oRequest)
+  //   AniversarioApiService
+  //     .getAll(sp, oRequest)
+  //     .then(values => {
+  //       dispatch({ type: ActionReducer.SET_ANIVERSARIOS, payload: values })
+  //       return
+  //     })
+  //     .catch(err => {
+  //       console.error(err)
+  //     })
+  //     .then(ui.hideLoading)
+  // }
 
   const onClick = (obj: BannerVM) => {
     if (obj.URL) {
@@ -136,130 +136,171 @@ export const BannerResultado: React.FC = ({
     image: ['image-gallery-image', styles.imgAll],
   });
 
-  const GenerarCumpleanios = (item: BannerVM) => {
-    return (
-      <div className={styles.contenedorCumpleanios}>
-        <Stack horizontal wrap className={styles.sectionHeaderCumpleanios} tokens={wrapStackTokens} onClick={() => onClick(item)}>
-          <span className={styles.textHeaderCumpleanios}>Cumpleaños de {mesActual}</span>
-        </Stack>
-        <img
-          className={classNames.cumpleanios}
-          src={item.ServerRelativeUrl}
-          alt={item.ServerRelativeUrl || ""}
-          loading="eager"
-          onClick={() => onClick(item)}
-        />
-        <Stack horizontal wrap className={styles.sectionCumpleanios} tokens={wrapStackTokens} onClick={() => onClick(item)}>
-          {state.cumpleanios.map(x => {
-            return (<span className={styles.textCumpleanios}>{x.DiaCumpleanios + " - " + x.Title}</span>)
-          })}
-        </Stack>
-      </div>
-    )
-  }
+  // const GenerarCumpleanios = (item: BannerVM) => {
+  //   return (
+  //     <div className={styles.contenedorCumpleanios}>
+  //       <Stack horizontal wrap className={styles.sectionHeaderCumpleanios} tokens={wrapStackTokens} onClick={() => onClick(item)}>
+  //         <span className={styles.textHeaderCumpleanios}>Cumpleaños de {mesActual}</span>
+  //       </Stack>
+  //       <img
+  //         className={classNames.cumpleanios}
+  //         src={item.ServerRelativeUrl}
+  //         alt={item.ServerRelativeUrl || ""}
+  //         loading="eager"
+  //         onClick={() => onClick(item)}
+  //       />
+  //       <Stack horizontal wrap className={styles.sectionCumpleanios} tokens={wrapStackTokens} onClick={() => onClick(item)}>
+  //         {state.cumpleanios.map(x => {
+  //           return (<span className={styles.textCumpleanios}>{x.DiaCumpleanios + " - " + x.Title}</span>)
+  //         })}
+  //       </Stack>
+  //     </div>
+  //   )
+  // }
 
-  const GenerarCumpleaniosNext = (item: BannerVM) => {
-    return (
-      <div className={styles.contenedorCumpleanios}>
-        <Stack horizontal wrap className={styles.sectionHeaderCumpleanios} tokens={wrapStackTokens} onClick={() => onClick(item)}>
-          <span className={styles.textHeaderCumpleanios}>Cumpleaños de {mesSiguiente}</span>
-        </Stack>
-        <img
-          className={classNames.cumpleanios}
-          src={item.ServerRelativeUrl}
-          alt={item.ServerRelativeUrl || ""}
-          loading="eager"
-          onClick={() => onClick(item)}
-        />
-        <Stack horizontal wrap className={styles.sectionCumpleanios} tokens={wrapStackTokens} onClick={() => onClick(item)}>
-          {state.cumpleaniosnext.map(x => {
-            return (<span className={styles.textCumpleanios}>{x.DiaCumpleanios + " - " + x.Title}</span>)
-          })}
-        </Stack>
-      </div>
-    )
-  }
+  // const GenerarCumpleaniosNext = (item: BannerVM) => {
+  //   return (
+  //     <div className={styles.contenedorCumpleanios}>
+  //       <Stack horizontal wrap className={styles.sectionHeaderCumpleanios} tokens={wrapStackTokens} onClick={() => onClick(item)}>
+  //         <span className={styles.textHeaderCumpleanios}>Cumpleaños de {mesSiguiente}</span>
+  //       </Stack>
+  //       <img
+  //         className={classNames.cumpleanios}
+  //         src={item.ServerRelativeUrl}
+  //         alt={item.ServerRelativeUrl || ""}
+  //         loading="eager"
+  //         onClick={() => onClick(item)}
+  //       />
+  //       <Stack horizontal wrap className={styles.sectionCumpleanios} tokens={wrapStackTokens} onClick={() => onClick(item)}>
+  //         {state.cumpleaniosnext.map(x => {
+  //           return (<span className={styles.textCumpleanios}>{x.DiaCumpleanios + " - " + x.Title}</span>)
+  //         })}
+  //       </Stack>
+  //     </div>
+  //   )
+  // }
 
-  const GenerarFeriado = (item: BannerVM) => {
-    return (
-      <div className={styles.contenedorFeriado}>
-        <Stack horizontal wrap className={styles.sectionHeaderFeriado} tokens={wrapStackTokens} onClick={() => onClick(item)}>
-          <span className={styles.textHeaderFeriado}>Feriados de {mesActual}</span>
-        </Stack>
-        <img
-          className={classNames.feriado}
-          src={item.ServerRelativeUrl}
-          alt={item.ServerRelativeUrl || ""}
-          loading="eager"
-          onClick={() => onClick(item)}
-        />
-        <Stack horizontal wrap className={styles.sectionFeriado} tokens={wrapStackTokens} onClick={() => onClick(item)}>
-          {state.feriados.map(x => {
-            return (<span className={styles.textFeriado}>{x.DiaCumpleanios + " - " + x.Title}</span>)
-          })}
-        </Stack>
-      </div>
-    )
-  }
+  // const GenerarFeriado = (item: BannerVM) => {
+  //   return (
+  //     <div className={styles.contenedorFeriado}>
+  //       <Stack horizontal wrap className={styles.sectionHeaderFeriado} tokens={wrapStackTokens} onClick={() => onClick(item)}>
+  //         <span className={styles.textHeaderFeriado}>Feriados de {mesActual}</span>
+  //       </Stack>
+  //       <img
+  //         className={classNames.feriado}
+  //         src={item.ServerRelativeUrl}
+  //         alt={item.ServerRelativeUrl || ""}
+  //         loading="eager"
+  //         onClick={() => onClick(item)}
+  //       />
+  //       <Stack horizontal wrap className={styles.sectionFeriado} tokens={wrapStackTokens} onClick={() => onClick(item)}>
+  //         {state.feriados.map(x => {
+  //           return (<span className={styles.textFeriado}>{x.DiaCumpleanios + " - " + x.Title}</span>)
+  //         })}
+  //       </Stack>
+  //     </div>
+  //   )
+  // }
 
-  const GenerarAniversario = (item: BannerVM) => {
-    return (
-      <div className={styles.contenedorAniversario}>
-        <Stack horizontal wrap className={styles.sectionHeaderAniversario} tokens={wrapStackTokens} onClick={() => onClick(item)}>
-          <span className={styles.textHeaderAniversario}>Aniversarios de {mesActual}</span>
-        </Stack>
-        <img
-          className={classNames.aniversario}
-          src={item.ServerRelativeUrl}
-          alt={item.ServerRelativeUrl || ""}
-          loading="eager"
-          onClick={() => onClick(item)}
-        />
-        <Stack horizontal wrap className={styles.sectionAniversario} tokens={wrapStackTokens} onClick={() => onClick(item)}>
-          {state.aniversarios.map(x => {
-            return (<span className={styles.textAniversario}>{x.DiaCumpleanios + " - " + x.Title}</span>)
-          })}
-        </Stack>
-      </div>
-    )
-  }
+  // const GenerarAniversario = (item: BannerVM) => {
+  //   return (
+  //     <div className={styles.contenedorAniversario}>
+  //       <Stack horizontal wrap className={styles.sectionHeaderAniversario} tokens={wrapStackTokens} onClick={() => onClick(item)}>
+  //         <span className={styles.textHeaderAniversario}>Aniversarios de {mesActual}</span>
+  //       </Stack>
+  //       <img
+  //         className={classNames.aniversario}
+  //         src={item.ServerRelativeUrl}
+  //         alt={item.ServerRelativeUrl || ""}
+  //         loading="eager"
+  //         onClick={() => onClick(item)}
+  //       />
+  //       <Stack horizontal wrap className={styles.sectionAniversario} tokens={wrapStackTokens} onClick={() => onClick(item)}>
+  //         {state.aniversarios.map(x => {
+  //           return (<span className={styles.textAniversario}>{x.DiaCumpleanios + " - " + x.Title}</span>)
+  //         })}
+  //       </Stack>
+  //     </div>
+  //   )
+  // }
 
+  // const GenerarBanner = (item: BannerVM) => {
+  //   return (
+  //     <img
+  //       className={classNames.image}
+  //       src={item.ServerRelativeUrl}
+  //       alt={item.ServerRelativeUrl || ""}
+  //       loading="eager"
+  //       onClick={() => onClick(item)}
+  //     />
+  //   )
+  // }
   const GenerarBanner = (item: BannerVM) => {
     return (
-      <img
-        className={classNames.image}
-        src={item.ServerRelativeUrl}
-        alt={item.ServerRelativeUrl || ""}
-        loading="eager"
-        onClick={() => onClick(item)}
-      />
+      // <>
+      <div>
+        <a href={item?.URL || '#'} target={item?.NuevaVentana ? '_blank' : '_self'}>
+          <div className={"contenedor-" + item?.EtiquetaEstilos}>
+            <Stack horizontal wrap className={styles.sectionHeaderCumpleanios} tokens={wrapStackTokens}>
+              <div id={"titulo-" + item?.EtiquetaEstilos}><span className={styles.textHeaderCumpleanios}>{item?.Titulo}</span></div>
+            </Stack>
+            <img
+              className={classNames.cumpleanios}
+              src={item.ServerRelativeUrl}
+              alt={item.ServerRelativeUrl || ""}
+              loading="eager"
+            />
+            <div id={"listado-" + item?.EtiquetaEstilos}></div>
+            <div id={"noregistros-" + item?.EtiquetaEstilos} style={{ display: 'none' }}><span></span></div>
+          </div>
+        </a>
+      </div>
+      //     <div className={styles.contenedorCumpleanios}>
+      //       <Stack horizontal wrap className={styles.sectionHeaderCumpleanios} tokens={wrapStackTokens}>
+      //         <span className={styles.textHeaderCumpleanios}>Cumpleaños de {mesActual}</span>
+      //       </Stack>
+      //       <img
+      //         className={classNames.cumpleanios}
+      //         src={item.ServerRelativeUrl}
+      //         alt={item.ServerRelativeUrl || ""}
+      //         loading="eager"
+      //         onClick={() => onClick(item)}
+      //       />
+      //       <Stack horizontal wrap className={styles.sectionCumpleanios} tokens={wrapStackTokens} onClick={() => onClick(item)}>
+      //         {state.cumpleanios.map(x => {
+      //           return (<span className={styles.textCumpleanios}>{x.DiaCumpleanios + " - " + x.Title}</span>)
+      //         })}
+      //       </Stack>
+      //     </div>
+      // </> 
     )
   }
-
   const _myImageGalleryRenderer = (item: BannerVM) => {
-    switch (item.TipoPlantilla) {
-      case TIPO.BANNER:
-        return GenerarBanner(item)
-      case TIPO.ANIVERSARIO:
-        return GenerarAniversario(item)
-      case TIPO.CUMPLEANIOS:
-        if (item.EsSiguiente)
-          return GenerarCumpleaniosNext(item)
-        else
-          return GenerarCumpleanios(item)
-      case TIPO.FERIADO:
-        return GenerarFeriado(item)
-      default:
-        return GenerarBanner(item)
-    }
+    // switch (item.TipoPlantilla) {
+    //   case TIPO.BANNER:
+    //     return GenerarBanner(item)
+    //   case TIPO.ANIVERSARIO:
+    //     return GenerarAniversario(item)
+    //   case TIPO.CUMPLEANIOS:
+    //     if (item.EsSiguiente)
+    //       return GenerarCumpleaniosNext(item)
+    //     else
+    //       return GenerarCumpleanios(item)
+    //   case TIPO.FERIADO:
+    //     return GenerarFeriado(item)
+    //   default:
+    //     return GenerarBanner(item)
+    // }
+
+    return GenerarBanner(item)
   }
 
   React.useEffect(() => {
     onFilter(null)
-    ListarCumpleanieros()
-    ListarAniversarios()
-    ListarFeriados()
-    ListarCumpleanierosMesSiguiente()
+    // ListarCumpleanieros()
+    // ListarAniversarios()
+    // ListarFeriados()
+    // ListarCumpleanierosMesSiguiente()
   }, [])
 
   return (

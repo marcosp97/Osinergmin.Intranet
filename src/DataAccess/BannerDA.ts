@@ -12,78 +12,86 @@ import { IItemAddResult, IItemUpdateResult } from "@pnp/sp/items";
 import { IFileInfo } from "@pnp/sp/files";
 import { FileBE } from "../Entity/FileBE";
 
-const map_entity = (entity: BannerBE): BannerVM =>({
+const map_entity = (entity: BannerBE): BannerVM => ({
     Id: entity.Id,
     Filename: entity.Filename,
     TipoPlantilla: entity.TipoPlantilla,
     URL: entity.URL,
-    Activo: entity.Activo
+    Activo: entity.Activo,
+    EtiquetaEstilos: entity.EtiquetaEstilos,
+    NuevaVentana: entity.NuevaVentana,
+    Orden: entity.Orden,
+    Titulo: entity.Title,
 })
 
-const map_file = (entity: FileBE): BannerVM =>({
+const map_file = (entity: FileBE): BannerVM => ({
     Id: entity?.ListItemAllFields?.Id,
     Filename: entity?.Name,
     TipoPlantilla: entity?.ListItemAllFields?.TipoPlantilla,
     URL: entity?.ListItemAllFields?.URL,
     ServerRelativeUrl: entity?.ServerRelativeUrl,
-    Activo: entity?.ListItemAllFields?.Activo
+    Activo: entity?.ListItemAllFields?.Activo,
+    EtiquetaEstilos: entity?.ListItemAllFields?.EtiquetaEstilos,
+    NuevaVentana: entity?.ListItemAllFields?.NuevaVentana,
+    Orden: entity?.ListItemAllFields?.Orden,
+    Titulo: entity?.ListItemAllFields?.Title
 })
 
-const getFileAll = async(sp: SPFI, params: IQueryParams): Promise<BannerVM[]> => {
+const getFileAll = async (sp: SPFI, params: IQueryParams): Promise<BannerVM[]> => {
     let lst: FileBE[] = await sp.web.getFolderByServerRelativePath(LIST.Banner)
-                                .files
-                                .filter(params.filter || "")
-                                .select(...ArrayHelper(params.select))
-                                .expand(...ArrayHelper(params.expand))
-                                .orderBy(params.orderby || "ListItemAllFields/Id", params.ascending || true)
-                                .top(params.top || 5000)
-                                ()
+        .files
+        .filter(params.filter || "")
+        .select(...ArrayHelper(params.select))
+        .expand(...ArrayHelper(params.expand))
+        .orderBy(params.orderby || "ListItemAllFields/Id", params.ascending || true)
+        .top(params.top || 5000)
+        ()
     console.log(lst)
     return lst?.map(map_file)
 }
 
 
-const getAll = async(sp: SPFI, params: IQueryParams): Promise<BannerVM[]> => {
-    
+const getAll = async (sp: SPFI, params: IQueryParams): Promise<BannerVM[]> => {
+
     const data = await sp.web.lists.getByTitle(LIST.Banner)
-                                .items
-                                .filter(params.filter || "")
-                                .select(...ArrayHelper(params.select))
-                                .expand(...ArrayHelper(params.expand))
-                                .orderBy(params.orderby || "Id", params.ascending || true)
-                                .top(params.top || 5000)
-                                ()
+        .items
+        .filter(params.filter || "")
+        .select(...ArrayHelper(params.select))
+        .expand(...ArrayHelper(params.expand))
+        .orderBy(params.orderby || "Id", params.ascending || true)
+        .top(params.top || 5000)
+        ()
     console.log(data)
     let lst: BannerBE[] = data
     return lst?.map(x => map_entity(x))
 }
 
-const getById = async(sp: SPFI, params: IQueryParams, entityId: number): Promise<BannerVM[]> => {
-    
+const getById = async (sp: SPFI, params: IQueryParams, entityId: number): Promise<BannerVM[]> => {
+
     let lst: BannerBE[] = await sp.web.lists.getByTitle(LIST.Banner)
-                                .items
-                                .getById(entityId)
-                                .select(...ArrayHelper(params.select))
-                                .expand(...ArrayHelper(params.expand))
-                                ()
+        .items
+        .getById(entityId)
+        .select(...ArrayHelper(params.select))
+        .expand(...ArrayHelper(params.expand))
+        ()
     return lst?.map(x => map_entity(x))
 }
 
-const create = async(sp: SPFI, entity: any): Promise<BannerVM> => {
-    
+const create = async (sp: SPFI, entity: any): Promise<BannerVM> => {
+
     let objAdd: IItemAddResult = await sp.web.lists.getByTitle(LIST.Banner)
-                                .items
-                                .add(entity)
+        .items
+        .add(entity)
     const data: BannerBE = objAdd.data
     return map_entity(data)
 }
 
-const update = async(sp: SPFI, entity: any, entityId: number): Promise<BannerVM> => {
-    
+const update = async (sp: SPFI, entity: any, entityId: number): Promise<BannerVM> => {
+
     let objUpdate: IItemUpdateResult = await sp.web.lists.getByTitle(LIST.Banner)
-                                .items
-                                .getById(entityId)
-                                .update(entity)
+        .items
+        .getById(entityId)
+        .update(entity)
     const data: BannerBE = entity
     return map_entity(data)
 }
