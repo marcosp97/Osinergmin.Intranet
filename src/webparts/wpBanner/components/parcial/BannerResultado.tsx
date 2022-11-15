@@ -241,8 +241,8 @@ export const BannerResultado: React.FC = ({
       <div>
         <a href={item?.URL || '#'} target={item?.NuevaVentana ? '_blank' : '_self'}>
           <div className={"contenedor-" + item?.EtiquetaEstilos}>
-            <Stack horizontal wrap className={styles.sectionHeaderCumpleanios} tokens={wrapStackTokens}>
-              <div id={"titulo-" + item?.EtiquetaEstilos}><span className={styles.textHeaderCumpleanios}>{item?.Titulo}</span></div>
+            <Stack horizontal wrap tokens={wrapStackTokens}>
+              <div id={"titulo-" + item?.EtiquetaEstilos}><span>{item?.Titulo}</span></div>
             </Stack>
             <img
               className={classNames.cumpleanios}

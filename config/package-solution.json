@@ -3,7 +3,7 @@
   "solution": {
     "name": "grt-home-banner-client-side-solution",
     "id": "1bf6e583-6ae5-4324-be84-bd5a44aadf85",
-    "version": "1.0.2.2",
+    "version": "1.0.2.3",
     "includeClientSideAssets": true,
     "isDomainIsolated": false,
     "features": [
@@ -11,7 +11,7 @@
         "title": "grt-home-banner Feature",
         "description": "The feature that activates elements of the grt-home-banner solution.",
         "id": "f3ac33e1-28fb-41d5-ba24-5d837e6a4776",
-        "version": "1.0.2.2"
+        "version": "1.0.2.3"
       }
     ]
   },
