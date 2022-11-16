@@ -2,5 +2,5 @@
   "$schema": "https://developer.microsoft.com/json-schemas/core-build/serve.schema.json",
   "port": 4321,
   "https": true,
-  "initialPage": "https://techeraperu0.sharepoint.com/sites/osinergmindesa/_layouts/15/workbench.aspx"
+  "initialPage": "https://osinergmin.sharepoint.com/sites/RegulacionTarifaria/_layouts/15/workbench.aspx"
 }
