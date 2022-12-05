@@ -39,8 +39,8 @@ export const BannerResultado: React.FC = ({
       .then(ui.hideLoading)
   }
 
-  const mesActual = MONTHS[new Date().getMonth()].name
-  const mesSiguiente = MONTHS[new Date().getMonth() + 1].name
+  // const mesActual = MONTHS[new Date().getMonth()].name
+  // const mesSiguiente = MONTHS[new Date().getMonth() + 1].name
 
   // const ListarCumpleanieros = () => {
   //   ui.showLoading()
@@ -296,7 +296,11 @@ export const BannerResultado: React.FC = ({
   }
 
   React.useEffect(() => {
-    onFilter(null)
+    try {
+      onFilter(null)
+    } catch (error) {
+      console.log(error)
+    }
     // ListarCumpleanieros()
     // ListarAniversarios()
     // ListarFeriados()
